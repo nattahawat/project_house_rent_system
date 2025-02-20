@@ -8,6 +8,9 @@ const loadData = async () => {
     console.log('loadData');
     const response = await axios.get(`${BASE_URL}/agreement`)
     console.log(response.data);
+    const url = new URL(window.location.href)
+    loginId = url.searchParams.get('Ep_id')
+    console.log(loginId);
 
     const fromDOM = document.getElementById('datahome')
 
@@ -21,8 +24,8 @@ const loadData = async () => {
                 <label>IDสัญญาเช่า:</label> ${datahome.agreements_id} <label>วันที่:</label> ${datahome.contractdate}  <label>สถานะ:</label> ${datahome.status}
                 </div>
                 <div>
-                    <a href='/employees/agreementEp.html?id=${datahome.agreements_id}'><button>Edit</button></a>
-                    <button class ='delete' data-id='${datahome.home_id}'>Delete</button>
+                    <a href='/employees/agreementEp.html?agreements_id=${datahome.agreements_id}&Ep_id=${loginId}'><button>Edit</button></a>
+                    <button class ='delete' data-id='${datahome.home_id}' style="display:none;">Delete</button>
                 </div>
             </div>
     </div>

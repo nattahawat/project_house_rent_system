@@ -110,27 +110,6 @@ app.delete('/datahome/:id',async(req,res)=>{
     }
 })
 
-//GET /doctor/search/:keyword สำหรับค้นหา user โดยใช้ keyword ที่ระบุ 
-app.get('/datahome/search/:keyword',async(req,res)=>{
-    try{
-        let keyword = req.params.keyword;
-        //ยังมีerror ที่ถ้าใส่ ชื่อกับนามสกุล แล้วไม่เจอ จะเข้าไปที่ catch
-        const results = await conn.query('SELECT * FROM homes WHERE titlehome LIKE ? OR location LIKE ?',['%'+keyword+'%','%'+keyword+'%']);
-        if(results[0].length == 0){
-            res.status(404).json({
-                message:'No users found'
-            })
-            return;
-        }
-        res.json(results[0]);
-    }catch(error){
-        console.log(error);
-        res.status(500).json({
-            message:'Internal server error'
-        })
-    }
-})
-
 // 6.GET /agreement สำหรับ get agreement ทั้งหมดที่บันทึกเข้าไปออกมา
 app.get('/agreement',async(req,res)=>{
     const results = await conn.query('SELECT * FROM agreements');
@@ -138,8 +117,7 @@ app.get('/agreement',async(req,res)=>{
 })
 
 
-
-//7.GET /datahome/search/:keyword สำหรับค้นหา user โดยใช้ keyword ที่ระบุ 
+//7.GET /datahome/search/:keyword สำหรับค้นหา บ้าน โดยใช้ keyword ที่ระบุ 
 app.post('/datahome/search', async (req, res) => {
     try {
         let { titlehome, location, typehome, bedroom } = req.body;
@@ -236,6 +214,7 @@ app.post('/employee/login',async(req,res)=>{
     }
 })
 
+//ส่วน agreement
 //get /agreement/:id สำหรับ get agreement ตาม id ที่เราส่งเข้ามา
 app.get('/agreement/:id',async(req,res)=>{
     try{
@@ -248,6 +227,42 @@ app.get('/agreement/:id',async(req,res)=>{
             return;
         }
         res.json(results[0]);
+    }catch(error){
+        res.status(500).json({
+            message:error.message
+        })
+    }
+})
+
+//put /agreement/:id สำหรับยืนยัน agreement ตาม id ที่เราส่งเข้ามา
+app.put('/agreementpass/:id',async(req,res)=>{
+    try{
+        let id = req.params.id;
+        let agreementData = {status: 'ตรวจสอบแล้ว'}
+
+        const results = await conn.query('UPDATE agreements SET ? WHERE agreements_id = ?',[agreementData,id])
+        res.json({
+            message:'Update from success',
+            data: agreementData[0]
+        })
+    }catch(error){
+        res.status(500).json({
+            message:error.message
+        })
+    }
+})
+
+//put /agreement/:id สำหรับยืนยัน agreement ตาม id ที่เราส่งเข้ามา
+app.put('/agreementnotpass/:id',async(req,res)=>{
+    try{
+        let id = req.params.id;
+        let agreementData = {status: 'ยกเลิก'}
+
+        const results = await conn.query('UPDATE agreements SET ? WHERE agreements_id = ?',[agreementData,id])
+        res.json({
+            message:'Update from success',
+            data: agreementData[0]
+        })
     }catch(error){
         res.status(500).json({
             message:error.message
