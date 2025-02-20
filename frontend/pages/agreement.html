@@ -205,6 +205,19 @@
                     <p class="signature">ลงชื่อ <input type="text" name="sign_witness2"> (พยาน)</p>
                 </div>
             </div>
+            <div class="card card-body">
+                <h3 class="text-center">Upload Image</h3>
+                <img src="/imags/qrcode_167539300_8c5df9eaccc9d2e8dc3b5298ff30f291.png" alt="" class="img-fluid" style="max-width: 300px; margin: auto;">
+                <div class="mb-3">
+                    <input type="file" class="form-control" id="fileInput" name="fileInput" accept="image/*">
+                </div>
+
+                <p id="uploadStatus" class="mt-3"></p>
+                <!-- แสดงรูปที่อัปโหลด -->
+                <div class="mt-4 text-center">
+                    <img id="uploadedImage" src="" alt="" class="img-fluid" style="max-width: 300px; display: none;">
+                </div>
+            </div>
             <div id="message" class="message" style="color: red;"></div>
             <button onclick="submitData()" type="submit">บันทึกข้อมูล</button>
         </div>

@@ -43,7 +43,7 @@ window.onload = async () => {
         Home_taxDOM.value = datahome.tax
 
         Sing_ownerDOM.value = owner.firstname + ' ' + owner.lastname
-
+        console.log("หน้า HTML โหลดเสร็จแล้ว");
     } catch (error) {
         console.log('error', error);
     }
@@ -113,82 +113,101 @@ const validateDatauser = (agreementData) => {
     }
     if (!agreementData.sign_witness_owner) {
         errors.push('กรุณากรอก ช่องลงชื่อพยาน(ผู้ให้เช่า)');
+    }if (!agreementData.image_agreement) {
+        errors.push('กรุณาเลือกรูปสลิปการโอนเงิน');
     }
     return errors;
 }
 
 const submitData = async () => {
-    let messageDOM = document.getElementById('message')
+    let messageDOM = document.getElementById('message');
     try {
         console.log('test');
-        let agreementData = {
-            contractdate: document.querySelector('input[name=contract_date]').value,
-            owner_name: document.querySelector('input[name=owner_name]').value,
-            owner_address: document.querySelector('textarea[name=owner_address]').value,
+        let formData = new FormData();
 
-            renter_name: document.querySelector('input[name=renter_name]').value,
-            renter_address: document.querySelector('textarea[name=renter_address]').value,
-            renter_nationalcard_number: document.querySelector('input[name=renter_id]').value,
-            renter_id_issued_by: document.querySelector('input[name=renter_id_issued_by]').value,
-            renter_id_date: document.querySelector('input[name=renter_id_date]').value,
+        formData.append('contractdate', document.querySelector('input[name=contract_date]').value);
+        formData.append('owner_name', document.querySelector('input[name=owner_name]').value);
+        formData.append('owner_address', document.querySelector('textarea[name=owner_address]').value);
 
-            home_id: document.querySelector('input[name=home_id]').value,
-            home_address: document.querySelector('textarea[name=home_address]').value,
-            home_price: document.querySelector('input[name=home_price]').value,
-            home_paymentdate: document.querySelector('input[name=home_payment_date]').value,
-            home_insurance: document.querySelector('input[name=damage_insurance]').value,
-            home_tax: document.querySelector('input[name=home_tax]').value,
+        formData.append('renter_name', document.querySelector('input[name=renter_name]').value);
+        formData.append('renter_address', document.querySelector('textarea[name=renter_address]').value);
+        formData.append('renter_nationalcard_number', document.querySelector('input[name=renter_id]').value);
+        formData.append('renter_id_issued_by', document.querySelector('input[name=renter_id_issued_by]').value);
+        formData.append('renter_id_date', document.querySelector('input[name=renter_id_date]').value);
 
-            rental_time: document.querySelector('input[name=rental_time]').value,
-            checkin_date: document.querySelector('input[name=renter_checkin]').value,
-            checkout_date: document.querySelector('input[name=renter_checkout]').value,
+        formData.append('home_id', document.querySelector('input[name=home_id]').value);
+        formData.append('home_address', document.querySelector('textarea[name=home_address]').value);
+        formData.append('home_price', document.querySelector('input[name=home_price]').value);
+        formData.append('home_paymentdate', document.querySelector('input[name=home_payment_date]').value);
+        formData.append('home_insurance', document.querySelector('input[name=damage_insurance]').value);
+        formData.append('home_tax', document.querySelector('input[name=home_tax]').value);
 
-            sign_renter: document.querySelector('input[name=sign_renter]').value,
-            sign_witness_renter: document.querySelector('input[name=sign_witness1]').value,
-            sign_owner: document.querySelector('input[name=sign_owner]').value,
-            sign_witness_owner: document.querySelector('input[name=sign_witness2]').value
+        formData.append('rental_time', document.querySelector('input[name=rental_time]').value);
+        formData.append('checkin_date', document.querySelector('input[name=renter_checkin]').value);
+        formData.append('checkout_date', document.querySelector('input[name=renter_checkout]').value);
+
+        formData.append('sign_renter', document.querySelector('input[name=sign_renter]').value);
+        formData.append('sign_witness_renter', document.querySelector('input[name=sign_witness1]').value);
+        formData.append('sign_owner', document.querySelector('input[name=sign_owner]').value);
+        formData.append('sign_witness_owner', document.querySelector('input[name=sign_witness2]').value);
+
+        // อัปโหลดรูป
+        let imageInput = document.getElementById("fileInput");
+        let imageFile = imageInput?.files?.[0]; // ใช้ optional chaining ป้องกัน error
+
+        if (imageFile) {
+            formData.append('image_agreement', imageFile);
+        } else {
+            console.log('ไม่มีไฟล์ที่ถูกเลือก');
         }
-        console.log(agreementData);
+        console.log('FormData:', formData);
+        console.log('FormData:', [...formData.entries()]);
+        for (let pair of formData.entries()) {
+            console.log(pair[0], pair[1]);  
+        }
 
-        const errors = validateDatauser(agreementData)
+        // ตรวจสอบข้อมูลก่อนส่ง
+        const errors = validateDatauser(Object.fromEntries(formData.entries()));
         if (errors.length > 0) {
             throw {
                 message: 'กรอกข้อมูลไม่ครบ!',
                 errors: errors
-            }
+            };
         }
-        let message = 'บันทึกข้อมูลสำเร็จ!'
 
-        const response = await axios.post(`${BASE_URL}/agreement`, agreementData)
-        console.log('response', response.data)
-        console.log('บันทึกข้อมูลสำเร็จ')
+        document.getElementById("uploadStatus").innerText = "กำลังบันทึกข้อมูล...";
 
-        messageDOM.innerText = message
-        messageDOM.className = 'message success'
-        if (response.data.length = 1) {
-            console.log('Add from success')
-            window.location.href = `/main.html?id=${loginId}`
+        // ส่ง POST ด้วย Axios
+        const response = await axios.post(`${BASE_URL}/agreement`, formData, {
+            headers: { "Content-Type": "multipart/form-data" }
+        });
+
+        document.getElementById("uploadStatus").innerText = `เพิ่มข้อมูลสำเร็จ! ID: ${response.data.id}`;
+        console.log('response', response.data);
+
+        messageDOM.innerText = 'บันทึกข้อมูลสำเร็จ!';
+        messageDOM.className = 'message success';
+
+        if (response.data.length === 1) {
+            console.log('Add from success');
+            window.location.href = `/mian.html?id=${loginId}`;
         }
     } catch (error) {
-        console.log('error message', error.message)
-        console.log('error', error.errors)
-        if (error.response) {
-            console.log(error.response)
-            error.message = error.response.data.message
-            error.errors = error.response.data.errors
-        }
-        let htmlData = '<div>'
-        htmlData += `<div style="font-weight: bold;">${error.message}</div>`
-        htmlData += '<ul>'
-        for (let i = 0; i < error.errors.length; i++) {
-            htmlData += `<li>${error.errors[i]}</li>`
-        }
-        htmlData += '</ul>'
-        htmlData += '<div>'
+        console.error('Error:', error);
 
-        messageDOM.innerHTML = htmlData
+        // แสดงข้อผิดพลาด
+        let htmlData = `<div><div style="font-weight: bold;">${error.message}</div><ul>`;
+        if (error.errors) {
+            error.errors.forEach(err => {
+                htmlData += `<li>${err}</li>`;
+            });
+        }
+        htmlData += '</ul></div>';
+
+        messageDOM.innerHTML = htmlData;
     }
-}
+};
+
 
 const checkLogin = async () => {
     console.log('checkLogin');
@@ -198,7 +217,7 @@ const checkLogin = async () => {
     if (loginId != null) {
         statusLogin = "login"
         let navloginDOM = document.getElementById('nav')
-        console.log("id",loginId);
+        console.log("id", loginId);
         let htmlnavDOM = '<div>'
         htmlnavDOM += `<div>
             <div class="nav">

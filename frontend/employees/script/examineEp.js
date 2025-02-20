@@ -25,7 +25,7 @@ const loadData = async () => {
                 </div>
                 <div>
                     <a href='/employees/agreementEp.html?agreements_id=${datahome.agreements_id}&Ep_id=${loginId}'><button>Edit</button></a>
-                    <button class ='delete' data-id='${datahome.home_id}' style="display:none;">Delete</button>
+                    <button class ='delete' data-id='${datahome.agreements_id}' style="display:none";">Delete</button>
                 </div>
             </div>
     </div>
@@ -37,7 +37,8 @@ const loadData = async () => {
     const deleteDOM = document.getElementsByClassName('delete')
     for (let i = 0; i < deleteDOM.length; i++) {
         deleteDOM[i].addEventListener('click', async (event) => {
-            const id = event.target.dataset.id
+            const id = event.target.getAttribute('data-id')
+            console.log(id);
             try {
                 await axios.delete(`${BASE_URL}/agreement/${id}`)
                 loadData() //recursive function = เรียกฟังก์ชันตัวเองซ้ำ
