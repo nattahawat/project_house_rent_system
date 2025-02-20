@@ -1,0 +1,16 @@
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* ระยะห่างระหว่างช่อง */
+}
+
+.input-group {
+    display: flex;
+    align-items: center; /* จัด label กับ input ให้อยู่กลางบรรทัด */
+    gap: 10px; /* ระยะห่างระหว่าง label และ input */
+}
+
+.input-group label {
+    white-space: nowrap; /* ป้องกัน label ตกบรรทัด */
+    font-weight: bold;
+}

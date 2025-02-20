@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style/css.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <div class="nav" id="nav"></div>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <h1 class="head">ค้นหาบ้านเช่า</h1>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="form p-3">
+                        <form class="d-flex">
+                            <input class="form-control mb-3" id="search" type="search" placeholder="Search"
+                                aria-label="Search">
+                        </form>
+                        <div class="form-group">
+                            <select class="form-select mb-3" id="province" aria-label="Default select example">
+                                <option selected>จังหวัด</option>
+                                <option value="กรุงเทพ">กรุงเทพ</option>
+                                <option value="นครปฐม">นครปฐม</option>
+                                <option value="สมุทรสงคราม">สมุทรสงคราม</option>
+                            </select>
+                            <select class="form-select mb-3" id="typehome" aria-label="Default select example">
+                                <option selected>ประเภทบ้าน</option>
+                                <option value="TYH01">บ้านเดี่ยว</option>
+                                <option value="TYH02">บ้านแฝด</option>
+                                <option value="TYH03">ทาวน์โฮม</option>
+                                <option value="TYH04">อาคารพาณิชย์</option>
+                                <option value="TYH05">อพาร์ทเม้นท์</option>
+                            </select>
+                            <select class="form-select mb-3" id="bedroom" aria-label="Default select example">
+                                <option selected>จำนวนห้องนอน</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                            <button onclick="search()" class="btn btn-success container-fluid"
+                                type="submit">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="card">
+                    <div class="datahome" id="datahome"></div>
+                    <div class="datalogouthome" id="datalogouthome"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 My Website. All rights reserved.</p>
+        <p>
+            Follow us on
+            <a href="https://facebook.com/" target="_blank">Facebook</a>,
+            <a href="https://twitter.com/" target="_blank">Twitter</a>, and
+            <a href="https://instagram.com/" target="_blank">Instagram</a>.
+        </p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="/pages/script/search.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style/agreement.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body style="background-color: whitesmoke;">
+    <div class="header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <div class="nav" id="nav"></div>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="card card-body">
+            <h1 class="text-center" style="font-weight: bold;">ใบสัญญาเช่าบ้านออนไลน์</h1>
+            <div class="col-12 p-1" style="margin-top: 10px;">
+                <div class="card-body">
+                    <h3 style="font-weight: bold;">โดยใบสัญญาฉบับนี้</h3>
+                    <div class="row p-2">
+                        <div class="col-4">
+                            <div style="font-weight: bold;">เมื่อวันที่ทำสัญญา</div>
+                            <input type="date" class="form-control" name="contract_date">
+                        </div>
+                    </div>
+                    <div class="owner">
+                        <h4 style="font-weight: bold; margin-top: 20px;">"ข้อมูลผู้ให้เช่า"</h4>
+                        <div class="row p-2">
+                            <div class="col-12">
+                                <div style="font-weight: bold;">ข้าพเจ้า:</div>
+                                <input type="text" class="form-control" name="owner_name" placeholder="ชื่อ-สกุล" disabled readonly>
+                            </div>
+                            <!-- <div class="col-6">
+                                <div style="font-weight: bold;">อายุ:</div>
+                                <input type="number" class="form-control" name="owner_age" placeholder="กี่ปี" disabled>
+                            </div> -->
+                        </div>
+                        <div class="row p-2">
+                            <div class="col-12">
+                                <div style="font-weight: bold;">ที่อยู่:</div>
+                                <textarea style="width: 50%; resize: none;" class="form-control" name="owner_address"
+                                    placeholder="บ้านเลขที่ หมู่ที่ ถนน ตำบล อำเภอ จังหวัด" disabled></textarea>
+                            </div>
+                        </div>
+                        <div class="row p-2">
+                            <div class="col-12">
+                                <div style="font-weight: bold;">ซึ่งต่อไปในสัญญานี้เรียกว่า “ผู้ให้เช่า”</div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 style="font-weight: bold; margin-top: 20px;">"ข้อมูลผู้เช่า"</h4>
+                    <div class="renter">
+                        <div class="row p-2">
+                            <div class="col-12">
+                                <div style="font-weight: bold;">กับข้าพเจ้า:</div>
+                                <input type="text" class="form-control" name="renter_name" placeholder="ชื่อ-สกุล">
+                            </div>
+                            <!-- <div class="col-6">
+                                <div style="font-weight: bold;">อายุ:</div>
+                                <input type="number" class="form-control" name="renter_age" placeholder="กี่ปี">
+                            </div> -->
+                        </div>
+                        <div class="row p-2">
+                            <div class="col-12">
+                                <div style="font-weight: bold;">ที่อยู่:</div>
+                                <textarea style="width: 50%; resize: none;" class="form-control" name="renter_address"
+                                    placeholder="บ้านเลขที่ หมู่ที่ ถนน ตำบล อำเภอ จังหวัด"></textarea>
+                            </div>
+                        </div>
+                        <div class="row p-2">
+                            <div class="col-6">
+                                <div style="font-weight: bold;">ถือบัตรประชาชนเลขที่:</div>
+                                <input type="text" class="form-control" name="renter_id"
+                                    placeholder="เลขบัตรประชาชน 13 หลัก">
+                            </div>
+                            <div class="col-3">
+                                <div style="font-weight: bold;">ออกให้โดยที่ว่าการอำเภอ:</div>
+                                <input type="text" class="form-control" name="renter_id_issued_by"
+                                    placeholder="ออกบัตรที่ไหน">
+                            </div>
+                            <div class="col-3">
+                                <div style="font-weight: bold;">เมื่อวันที่:</div>
+                                <input type="date" class="form-control" name="renter_id_date" placeholder="mm/dd/yyyy">
+                            </div>
+                        </div>
+                        <div class="row p-2">
+                            <div class="col-12">
+                                <div style="font-weight: bold;">ซึ่งต่อไปในสัญญานี้เรียกว่า “ผู้เช่า” อีกฝ่ายหนึ่ง</div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 style="font-weight: bold; margin-top: 30px;">รายละเอียดการเช่า</h3>
+                    <div class="rental_contract">
+                        <div class="row p-2">
+                            <div class="col-6">
+                                <div style="font-weight: bold;">IDบ้าน:</div>
+                                <input type="text" class="form-control" name="home_id" placeholder="ID" disabled>
+                            </div>
+                            <div class="col-6">
+                                <div style="font-weight: bold;">ให้เช่าบ้านเลขที่:</div>
+                                <textarea style="width: 100%; resize: none;" class="form-control" name="home_address"
+                                    placeholder="บ้านเลขที่ หมู่ที่ ถนน ตำบล อำเภอ จังหวัด" disabled></textarea>
+                            </div>
+                        </div>
+                        <div class="row p-2">
+                            <div class="col-6">
+                                <div style="font-weight: bold;">ค่าเช่าเป็นรายเดือน:</div>
+                                <input type="number" class="form-control" name="home_price" placeholder="บาท/เดือน" disabled>
+                            </div>
+                            <div class="col-6">
+                                <div style="font-weight: bold;">กำหนดชำระทุกวันที่ :</div>
+                                <input type="number" class="form-control" name="home_payment_date"
+                                    placeholder="วันที่จ่ายค่าเช่า ไม่เกินวันที่ 5 ของเดือน">
+                            </div>
+                        </div>
+                        <div class="row p-2">
+                            <div class="col-6">
+                                <div style="font-weight: bold;">ค่าประกันความเสียหาย</div>
+                                <input type="number" class="form-control" name="damage_insurance" placeholder="บาท" disabled>
+                            </div>
+                        </div>
+                        <div class="row p-2">
+                            <div class="col-12">
+                                <div style="font-weight: bold; color: red;">**ได้คืนเมื่ออยู่ครบสัญญาโดยที่ ค่าน้ำ ค่าไฟ
+                                    จ่ายครบและไม่มีของเสียหาย**
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row p-2">
+                            <div class="col-4">
+                                <div style="font-weight: bold;">มีกำหนดเวลาเช่า:</div>
+                                <input type="number" class="form-control" name="rental_time" placeholder="เช่ากี่ปี">
+                            </div>
+                            <div class="col-4">
+                                <div style="font-weight: bold;">เริ่มตั้งแต่วันที่:</div>
+                                <input type="date" class="form-control" name="renter_checkin" placeholder="mm/dd/yyyy">
+                            </div>
+                            <div class="col-4">
+                                <div style="font-weight: bold;">ครบกำหนดวันเช่าวันที่:</div>
+                                <input type="date" class="form-control" name="renter_checkout" placeholder="mm/dd/yyyy">
+                            </div>
+                        </div>
+                        <div class="row p-2">
+                            <div class="col-12">
+                                <div style="font-weight: bold;">ค่าภาษีโรงเรือนและที่ดิน ทั้งสองฝ่ายตกลงให้:</div>
+                                <input type="text" class="form-control" name="home_tax" disabled>
+                            </div>
+                        </div>
+                        <h4 style="font-weight: bold; margin-top: 20px; color: red;">
+                            **ทั้งสองผ่ายตกลงทำสัญญากันดังมีข้อความต่อไปนี้คือ**</h4>
+                        <h3 style="font-weight: bold;">ข้อตกลงในใบสัญญาเช่าบ้าน</h3>
+                        <div style="font-size:large">
+                            <p>ข้อที่ 1. ผู้ให้เช่าตกลงให้เช่าและผู้เช่าตกลงเช่าบ้าน,ตึกแถว</p>
+                            <p>ข้อที่ 2. ผู้เช่าต้องชำระค่าเช่ารายเดือนตรงเวลา
+                                หากผู้เช่าไม่ชำระตามกำหนดยอมให้ผู้ให้เช่า ยึดทรัพย์สินและใส่กุญแจห้องของผู้เช่าได้</p>
+                            <p>ข้อที่ 3. ค่าภาษีโรงเรือนและที่ดินเป็นไปตามข้อตกลงของทั้งสองฝ่าย</p>
+                            <p>ข้อที่ 4. ผู้เช่าได้ตรวจดูบ้าน , ตึกแถวที่เช่าแล้ว
+                                เห็นว่าทุกสิ่งอยู่ในสภาพเรียบร้อยใช้การได้
+                                อย่าง สมบูรณ์จะดูแลมิให้ชำรุดทรุดโทรม และจะบำรุงรักษาให้อยู่ในสภาพดี พร้อมที่จะส่งมอบคืน
+                                ตามสภาพเดิมทุกประการ และตกลงยอมให้ผู้ให้เช่าหรือตัวแทน
+                                เข้าตรวจดูบ้าน,ตึกแถวที่เช่าได้ทุก
+                                เวลาภายหลังที่ได้แจ้งความประสงค์ให้ผู้เช่าทราบแล้ว
+                                ถ้าผู้เช่าต้องออกไปจากบ้าน,ตึกแถวที่เช่าไม่
+                                กรณีใด ๆ ผู้เช่าจะเรียกร้องค่าเสียหายและ / หรือค่าขนย้ายจากผู้ให้เช่ามิได้
+                            </p>
+                            <p>ข้อที่ 5. ผู้เช่าไม่มีสิทธินำบ้าน,ตึกแถวที่เช่าออกให้ผู้อื่นเช่าช่วง หรือทำนิติกรรมใด ๆ
+                                กับผู้อื่น ในอันที่จะเป็นผลก่อให้เกิดความผูกพันในบ้าน,ตึกแถวที่เช่า
+                                ไม่ว่าโดยตรงหรือโดยปริยาย
+                                และจะไม่ทำ การดัดแปลงหรือต่อเติมบ้าน,ตึกแถวที่เช่าไม่ว่าทั้งหมดหรือบางส่วน
+                                เว้นแต่จะได้รับความยินยอมเป็น หนังสือจากผู้ให้เช่า
+                                และหากเช่าได้ทำการดัดแปลงหรือต่อเติมสิ่งใดตามที่ได้รับความยินยอมเมื่อใด แล้ว
+                                ผู้เช่ายอมยกกรรมสิทธิ์ในทรัพย์สินสิ่งนั้นให้ตกเป็นของผู้ให้เช่านับแต่เมื่อนั้นด้วยทั้งสิ้น
+                            </p>
+                            <p>ข้อที่ 6. ถ้าเกิดอัคคีภัยขึ้นไม่ว่ากรณีใด ๆ ให้สัญญานี้เป็นอันสิ้นสุดลง</p>
+                            <p>ข้อที่ 7. ถ้าผู้ให้เช่าตกลงจะขายบ้าน,ตึกแถวที่เช่าให้แก่ผู้ใดก่อนครบกำหนดการเช่าตามสัญญา
+                                นี้ผู้ให้เช่าจะต้องแจ้งให้ผู้เช่าทราบล่วงหน้า
+                                เพื่อให้ผู้เช่าเตรียมตัวออกจากบ้าน,ตึกแถวที่เช่าเป็นเวลา
+                                ไม่น้อยกว่าสองเดือน และผู้ให้เช่าจะต้องแจ้งให้ผู้เช่าทราบด้วยว่า จะตกลงขายให้แก่ผู้ใด
+                                เป็นเงินเท่า ใดเพื่อผู้เช่าจะได้มีโอกาสตกลงซื้อได้ก่อน ในเมื่อเห็นว่าราคาสมควร
+                            </p>
+                            <p>ข้อที่ 8. เมื่อผู้เช่ากระทำผิดสัญญาข้อหนึ่งข้อใด ผู้ให้เช่ามีสิทธิบอกเลิกสัญญาได้ทันที
+                                และผู้
+                                เช่ายอมให้ผู้ให้เช่าทรงไว้ซึ่งสิทธิที่จะเข้ายึดครอบครองสถานที่และสิ่งที่เช่าได้โดยพลันคู่สัญญาได้อ่าน
+                                และเข้าใจข้อความดีแล้ว จึงลงลายมือชื่อไว้เป็นสำคัญต่อหน้าพยาน
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center" style="margin-top: 20px; font-weight: bold; font-size: larger;">
+                <div class="col-6">
+                    <p class="signature">ลงชื่อ <input type="text" name="sign_renter"> (ผู้เช่า)</p>
+                    <p class="signature">ลงชื่อ <input type="text" name="sign_witness1"> (พยาน)</p>
+                </div>
+                <div class="col-6">
+                    <p class="signature">ลงชื่อ <input type="text" name="sign_owner" disabled> (ผู้ให้เช่า)</p>
+                    <p class="signature">ลงชื่อ <input type="text" name="sign_witness2"> (พยาน)</p>
+                </div>
+            </div>
+            <div id="message" class="message" style="color: red;"></div>
+            <button onclick="submitData()" type="submit">บันทึกข้อมูล</button>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 My Website. All rights reserved.</p>
+        <p>
+            Follow us on
+            <a href="https://facebook.com/" target="_blank">Facebook</a>,
+            <a href="https://twitter.com/" target="_blank">Twitter</a>, and
+            <a href="https://instagram.com/" target="_blank">Instagram</a>.
+        </p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="/pages/script/agreement.js"></script>
+</body>
+
+</html>
