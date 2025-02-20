@@ -10,7 +10,7 @@ const submitData = async () => {
         let response = await axios.post(`${BASE_URL}/employee/login`, agreementData);
         console.log(response.data);
         if(response.data.length = 1){
-            window.location.href = `/employees/mainEp.html?id=${response.data[0].employee_id}`;
+            window.location.href = `/employees/mainEp.html?Ep_id=${response.data[0].employee_id}`;
             return;     
         }
     }catch(error){
