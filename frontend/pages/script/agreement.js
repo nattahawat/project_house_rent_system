@@ -188,10 +188,7 @@ const submitData = async () => {
         messageDOM.innerText = 'บันทึกข้อมูลสำเร็จ!';
         messageDOM.className = 'message success';
 
-        if (response.data.length === 1) {
-            console.log('Add from success');
-            window.location.href = `/mian.html?id=${loginId}`;
-        }
+        window.location.href = '/main.html?id=' + loginId;
     } catch (error) {
         console.error('Error:', error);
 
