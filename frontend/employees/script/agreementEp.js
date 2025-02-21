@@ -126,3 +126,7 @@ const notpass = async () => {
     console.log(response.data)
     window.location.href = `/employees/examineEp.html?Ep_id=${loginId}`
 }
+
+const back = async () => {
+     window.location.href = `/employees/examineEp.html?Ep_id=${loginId}`
+}

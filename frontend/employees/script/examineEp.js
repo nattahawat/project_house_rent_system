@@ -17,14 +17,24 @@ const loadData = async () => {
     let htmlData = '<div>'
     for (let i = 0; i < response.data.length; i++) {
         let datahome = response.data[i]
+        let statusclass = ''
+        if (datahome.status == "ยังไม่ตรวจสอบ") {
+            statusclass = 'text-warning'
+        }
+        if (datahome.status == "ตรวจสอบแล้ว") {
+            statusclass = 'text-success'
+        }
+        if (datahome.status == "ยกเลิก") {
+            statusclass = 'text-danger'
+        }
         htmlData += `<div>
         <div class="datahome">
             <div class="card card-body m-2">
                 <div class="datahome-group">
-                <label>IDสัญญาเช่า:</label> ${datahome.agreements_id} <label>วันที่:</label> ${datahome.contractdate}  <label>สถานะ:</label> ${datahome.status}
+                <label>IDสัญญาเช่า:</label> ${datahome.agreements_id} <label>วันที่:</label> ${datahome.contractdate}  <div>สถานะ: <span class="${statusclass}"> <strong>${datahome.status}</strong></div>
                 </div>
                 <div>
-                    <a href='/employees/agreementEp.html?agreements_id=${datahome.agreements_id}&Ep_id=${loginId}'><button>Edit</button></a>
+                    <a href='/employees/agreementEp.html?agreements_id=${datahome.agreements_id}&Ep_id=${loginId}'><button class="btn btn-primary" style="margin-top: 10px;">ตรวจสอบ</button></a>
                     <button class ='delete' data-id='${datahome.agreements_id}' style="display:none";">Delete</button>
                 </div>
             </div>
