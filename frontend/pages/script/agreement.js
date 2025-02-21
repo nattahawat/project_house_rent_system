@@ -6,7 +6,11 @@ window.onload = async () => {
     const urlParams = new URLSearchParams(window.location.search)
     const id = urlParams.get('homeid')
     console.log('id', id)
+    const urlParams2 = new URLSearchParams(window.location.search)
+    const userid = urlParams2.get('id')
+    console.log('userid', userid)
     await checkLogin()
+    ;
     try {
         const response = await axios.get(`${BASE_URL}/datahome/${id}`)
         const datahome = response.data[0]
@@ -31,6 +35,7 @@ window.onload = async () => {
         let Home_insuranceDOM = document.querySelector('input[name=damage_insurance]')
         let Home_taxDOM = document.querySelector('input[name=home_tax]')
 
+        let Renter_idDOM = document.querySelector('input[name=renter_id]')
         let Sing_ownerDOM = document.querySelector('input[name=sign_owner]')
 
         Owner_firstnameDOM.value = owner.firstname + ' ' + owner.lastname
@@ -42,6 +47,7 @@ window.onload = async () => {
         Home_insuranceDOM.value = datahome.damage_insurance
         Home_taxDOM.value = datahome.tax
 
+        Renter_idDOM.value = userid
         Sing_ownerDOM.value = owner.firstname + ' ' + owner.lastname
         console.log("หน้า HTML โหลดเสร็จแล้ว");
     } catch (error) {
@@ -62,6 +68,9 @@ const validateDatauser = (agreementData) => {
     }
     if (!agreementData.renter_name) {
         errors.push('กรุณากรอก ช่องชื่อ-นามสกุล(ผู้เช่า)');
+    }
+    if (!agreementData.custom_id) {
+        errors.push('กรุณากรอก ช่องID(ผู้เช่า)');
     }
     if (!agreementData.renter_address) {
         errors.push('กรุณากรอก ช่องที่อยู่(ผู้เช่า)');
@@ -116,6 +125,18 @@ const validateDatauser = (agreementData) => {
     } if (!agreementData.image_agreement) {
         errors.push('กรุณาเลือกรูปสลิปการโอนเงิน');
     }
+    if (agreementData.renter_nationalcard_number.length != 13) {
+        errors.push('กรุณากรอกเลขบัตรประชาชนให้ครบ 13 หลัก');
+    }
+    if (agreementData.home_payment_date != 5) {
+        errors.push('กรุณากรอกวันที่จ่ายค่าเช่า ต้องไม่เกินวันที่ 5 ของเดือน');
+    }
+    if (agreementData.rental_time > 5) {
+        errors.push('กรุณากรอกระยะเวลาเช่าไม่เกิน 5 ปี');
+    }
+    if (agreementData.renter_checkin > agreementData.renter_checkout) {
+        errors.push('กรุณากรอกวันเริ่มต้นเช่า และวันสิ้นสุดเช่าให้ถูกต้อง');
+    }
     return errors;
 }
 
@@ -130,8 +151,9 @@ const submitData = async () => {
         formData.append('owner_address', document.querySelector('textarea[name=owner_address]').value);
 
         formData.append('renter_name', document.querySelector('input[name=renter_name]').value);
+        formData.append('custom_id', document.querySelector('input[name=renter_id]').value);
         formData.append('renter_address', document.querySelector('textarea[name=renter_address]').value);
-        formData.append('renter_nationalcard_number', document.querySelector('input[name=renter_id]').value);
+        formData.append('renter_nationalcard_number', document.querySelector('input[name=renter_nationalcard_number]').value);
         formData.append('renter_id_issued_by', document.querySelector('input[name=renter_id_issued_by]').value);
         formData.append('renter_id_date', document.querySelector('input[name=renter_id_date]').value);
 

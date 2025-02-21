@@ -331,6 +331,22 @@ app.delete('/agreement/:id', async (req, res) => {
     }
 })
 
+//get /custom_agreement/ สำหรับ get agreement ทั้งหมดที่บันทึกเข้าไปออกมา
+app.get('/custom_agreement/:id', async (req, res) => {
+    try {
+        let id = req.params.id;
+        const results = await conn.query('SELECT * FROM agreements WHERE custom_id = ?', id);
+        if (results[0].length == 0) {
+            res.status(404).json({ message: 'No record found' });
+            return;
+        }
+        res.json(results[0]);
+    } catch(error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
 //api custom
 //GET /custom/:id สำหรับ get custom ตาม id ที่เราส่งเข้ามา
 app.get('/custom/:id', async (req, res) => {

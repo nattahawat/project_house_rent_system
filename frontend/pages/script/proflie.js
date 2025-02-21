@@ -64,3 +64,7 @@ const checkLogin = async () => {
         window.location.href = '/pages/login.html'
     }
 }
+
+const view = async () => {
+    window.location.href = `/pages/view.html?id=${loginId}`
+}

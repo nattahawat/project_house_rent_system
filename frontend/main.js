@@ -78,7 +78,7 @@ const loadData = async () => {
         console.log('logintest123456');
         const fromDOM = document.getElementById('datahome')
         let htmlData = '<div>'
-        for (let i = 0; i < response.data.length; i++) {
+        for (let i = 0; i < 5; i++) {
             let datahome = response.data[i]
             htmlData += `<div>
         <div class="datahome">
@@ -97,7 +97,7 @@ const loadData = async () => {
         console.log('logouttest123456   ');
         const logoutDOM = document.getElementById('datalogouthome')
         let htmlLoginData = '<div>'
-        for (let i = 0; i < response.data.length; i++) {
+        for (let i = 0; i < 5; i++) {
             let datahome = response.data[i]
             htmlLoginData += `<div>
             <div class="datahome">

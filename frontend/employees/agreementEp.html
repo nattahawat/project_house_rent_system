@@ -60,15 +60,15 @@
                     <h4 style="font-weight: bold; margin-top: 20px;">"ข้อมูลผู้เช่า"</h4>
                     <div class="renter">
                         <div class="row p-2">
-                            <div class="col-12">
+                            <div class="col-6">
                                 <div style="font-weight: bold;">กับข้าพเจ้า:</div>
                                 <input type="text" class="form-control" name="renter_name" placeholder="ชื่อ-สกุล"
                                     disabled readonly>
                             </div>
-                            <!-- <div class="col-6">
-                                <div style="font-weight: bold;">อายุ:</div>
-                                <input type="number" class="form-control" name="renter_age" placeholder="กี่ปี">
-                            </div> -->
+                            <div class="col-6">
+                                <div style="font-weight: bold;">IDผู้เช่า:</div>
+                                <input type="number" class="form-control" name="renter_id" placeholder="ID" disabled readonly>
+                            </div>
                         </div>
                         <div class="row p-2">
                             <div class="col-12">
@@ -81,7 +81,7 @@
                         <div class="row p-2">
                             <div class="col-6">
                                 <div style="font-weight: bold;">ถือบัตรประชาชนเลขที่:</div>
-                                <input type="text" class="form-control" name="renter_id"
+                                <input type="text" class="form-control" name="renter_nationalcard_number"
                                     placeholder="เลขบัตรประชาชน 13 หลัก" disabled readonly>
                             </div>
                             <div class="col-3">
@@ -215,8 +215,7 @@
                     <p class="signature">ลงชื่อ <input type="text" name="sign_owner" disabled readonly> (ผู้ให้เช่า)</p>
                     <p class="signature">ลงชื่อ <input type="text" name="sign_witness2" disabled readonly> (พยาน)</p>
                 </div>
-            </div>
-            
+            </div>   
         </div>
         <div class="card card-body">
             <div class="col-12 p-1" style="margin-top: 10px;">

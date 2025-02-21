@@ -31,8 +31,6 @@ window.onload = async () => {
                         <p>ห้องนอน : ${datahome.bedroom} ห้อง</p>
                         <p>ห้องน้ำ : ${datahome.bathroom} ห้อง</p>
                         <p>อยู่ที่ : ${datahome.location}</p>
-                        <p class="title">ไฮไลท์ : กาฮังบีช (เกาะเฮ) เกาะใกล้ๆ ที่เดินทางโดยเรือเร็วประมาณ 15-20
-                            นาทีเท่านั้น เป็นที่นิยมสำหรับนักท่องเที่ยวที่ชื่นชอบกิจกรรมกีฬาทางน้ำ</p>
                         <h3 style="color: chocolate; text-align: center;">ราคา : ${datahome.price} ต่อเดือน</h3> 
                     </div>
             </div>
@@ -66,8 +64,6 @@ window.onload = async () => {
                             <p>ห้องนอน : ${datahome.bedroom} ห้อง</p>
                             <p>ห้องน้ำ : ${datahome.bathroom} ห้อง</p>
                             <p>อยู่ที่ : ${datahome.location}</p>
-                            <p class="title">ไฮไลท์ : กาฮังบีช (เกาะเฮ) เกาะใกล้ๆ ที่เดินทางโดยเรือเร็วประมาณ 15-20
-                                นาทีเท่านั้น เป็นที่นิยมสำหรับนักท่องเที่ยวที่ชื่นชอบกิจกรรมกีฬาทางน้ำ</p>
                             <h3 style="color: chocolate; text-align: center;">ราคา : ${datahome.price} ต่อเดือน</h3> 
                         </div>
                 </div>
