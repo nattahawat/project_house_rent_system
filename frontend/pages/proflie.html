@@ -12,39 +12,45 @@
 
 <body>
     <div class="header">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <div class="nav" id="nav"></div>
-            </div>
-        </nav>
+        <div class="navbar navbar-expand-lg navbar-dark bg-dark" id="nav">
+        </div>
     </div>
     <div class="container p-2">
         <div class="container card p-2">
-            <div class="col-12 p-1" style="margin-top: 10px; " >
+            <div class="col-12 p-1" style="margin-top: 10px; ">
                 <div class="card-body">
+                    <button class="btn col-1 p-2" onclick="window.location.href='/main.html'"
+                        style="text-align: center; border: 2px solid black; margin-left: 90%; width: auto;">
+                        <img src="/imags/logout-icon-2048x1708-5s1s9mb0.png" style="width: 30px;" alt="...">
+                        Logout
+                    </button>
                     <h3 style="font-weight: bold; text-align: center;">My Proflie</h3>
                     <div class="owner">
                         <h4 style="font-weight: bold; margin-top: 20px;">ข้อมูลผู้ใช้</h4>
                         <div class="row p-2">
                             <div class="col-6">
                                 <div style="font-weight: bold;">ชื่อ:</div>
-                                <input type="text" class="form-control" name="user_firstname" placeholder="ชื่อ" disabled readonly>
+                                <input type="text" class="form-control" name="user_firstname" placeholder="ชื่อ"
+                                    disabled readonly>
                             </div>
                             <div class="col-6">
                                 <div style="font-weight: bold;">นามสกุล:</div>
-                                <input type="text" class="form-control" name="user_lastname" placeholder="นามสกุล" disabled readonly>
+                                <input type="text" class="form-control" name="user_lastname" placeholder="นามสกุล"
+                                    disabled readonly>
                             </div>
                         </div>
                         <div class="row p-2">
                             <div class="col-6">
                                 <div style="font-weight: bold;">email:</div>
-                                <input type="text" class="form-control" name="user_email" placeholder="email" disabled readonly>
+                                <input type="text" class="form-control" name="user_email" placeholder="email" disabled
+                                    readonly>
                             </div>
                         </div>
                         <div class="row p-2">
                             <div class="col-6">
                                 <div style="font-weight: bold;">เบอร์ติดต่อ:</div>
-                                <input type="text" class="form-control" name="user_phone" placeholder="เบอร์มือถือ" disabled readonly>
+                                <input type="text" class="form-control" name="user_phone" placeholder="เบอร์มือถือ"
+                                    disabled readonly>
                             </div>
                         </div>
                         <div class="row p-2">
@@ -54,14 +60,14 @@
                                     placeholder="บ้านเลขที่ หมู่ที่ ถนน ตำบล อำเภอ จังหวัด" disabled></textarea>
                             </div>
                         </div>
+                        <div class="row p-2">
+                            <div class="col-6">
+                                <button class="btn btn-primary" onclick="">ดูเอกสาร</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <button class="btn col-1 p-2" onclick="window.location.href='/main.html'" style="text-align: center; border: 2px solid black; margin-top: 10px;">  
-                <img src="/imags/logout-icon-2048x1708-5s1s9mb0.png" style="width: 30px;" alt="...">
-                Logout
-            </button>
-
         </div>
     </div>
     <footer>

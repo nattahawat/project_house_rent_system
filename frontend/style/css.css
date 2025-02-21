@@ -14,4 +14,9 @@ footer a:hover {
     text-decoration: underline;
 }
 
-
+/* ตัดพื้นที่เกินของ Navbar */
+.navbar {
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}

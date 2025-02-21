@@ -64,6 +64,11 @@ window.onload = async () => {
         sign_ownerDOM.value = datahome.sign_owner
         sign_witness_ownerDOM.value = datahome.sign_witness_owner
 
+        let renter_imageDOM = document.getElementById('renter_images')
+        let htmlimageDOM = '<div calss="renter_image">'
+        htmlimageDOM += `<img src="/uploads/${datahome.image}" width="300" height="300">`
+        htmlimageDOM += '</div>'
+        renter_imageDOM.innerHTML = htmlimageDOM
 
     } catch (error) {
         console.log('error', error);
