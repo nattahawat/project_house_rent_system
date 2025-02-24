@@ -12,11 +12,8 @@
 
 <body style="background-color: whitesmoke;">
     <div class="header">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <div class="nav" id="nav"></div>
-            </div>
-        </nav>
+        <div class="navbar navbar-expand-lg navbar-dark bg-dark" id="nav">
+        </div>
     </div>
     <div class="container">
         <div class="card card-body">
@@ -218,32 +215,13 @@
             </div>   
         </div>
         <div class="card card-body">
-            <div class="col-12 p-1" style="margin-top: 10px;">
-                <div class="card-body">
-                    <div class="row p-2">
-                        <div class="col-12 text-center ">
-                            <h3 style="font-weight: bold;">รูปสลิปโอนเงิน</h3>
-                            <div class="renter_images card-body" id="renter_images"></div>
-                        </div>
-                    </div>
-                    <div class="row text-center">
-                        <div class="col-6">
-                            <button class="btn btn-danger" style="margin-top: 20px; width: 80%;"
-                                onclick="notpass()">ไม่ผ่านการตรวจสอบ</button>
-                        </div>
-                        <div class="col-6">
-                            <button class="btn btn-success" style="margin-top: 20px; width: 80%;"
-                                onclick="pass()">ผ่านการตรวจสอบ</button>
-                        </div>
-                    </div>
-                    <div class="row text-center">
-                        <div class="col-12">
-                            <button class="btn btn-primary" style="margin-top: 20px; width: 90%;"
-                                onclick="back()">ย้อนกลับ</button>
-                        </div>
-                    </div>
+            <div class="row p-2">
+                <div class="col-12 text-center ">
+                    <h3 style="font-weight: bold;">รูปสลิปโอนเงิน</h3>
+                    <div class="renter_images card-body" id="renter_images"></div>
                 </div>
             </div>
+            <div class="button_action" id="button"></div>
         </div>
     </div>
     <footer>

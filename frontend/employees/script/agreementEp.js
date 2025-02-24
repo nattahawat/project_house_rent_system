@@ -71,7 +71,45 @@ window.onload = async () => {
         htmlimageDOM += `<img src="/uploads/${datahome.image}" width="300" height="300">`
         htmlimageDOM += '</div>'
         renter_imageDOM.innerHTML = htmlimageDOM
-
+        
+        let buttonDOM = document.getElementById('button')
+        let htmlbuttonDOM = ''
+        if(datahome.status != 'ตรวจสอบแล้ว' && datahome.status != 'ยกเลิก'){ 
+            htmlbuttonDOM += `
+            <div class="col-12 p-1" style="margin-top: 10px;">
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-6">
+                            <button class="btn btn-danger" style="margin-top: 20px; width: 80%;"
+                                onclick="notpass()">ไม่ผ่านการตรวจสอบ</button>
+                        </div>
+                        <div class="col-6">
+                            <button class="btn btn-success" style="margin-top: 20px; width: 80%;"
+                                onclick="pass()">ผ่านการตรวจสอบ</button>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-12">
+                            <button class="btn btn-primary" style="margin-top: 20px; width: 90%;"
+                                onclick="back()">ย้อนกลับ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+        }else{
+            htmlbuttonDOM += `
+            <div class="col-12 p-1" style="margin-top: 10px;">
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-12">
+                            <button class="btn btn-primary" style="margin-top: 20px; width: 90%;"
+                                onclick="back()">ย้อนกลับ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+        }
+        buttonDOM.innerHTML = htmlbuttonDOM
     } catch (error) {
         console.log('error', error);
     }
@@ -86,28 +124,24 @@ const checkLoginEp = async () => {
         statusLogin = "login"
         let navloginDOM = document.getElementById('nav')
         console.log("Ep_id", loginId);
-        let htmlnavDOM = '<div>'
-        htmlnavDOM += `<div>
-            <div class="nav">
-                    <a href="/employees/mainEp.html?Ep_id=${loginId}"><img src="/imags/Screenshot 2025-01-22 151148.png" width="70" height="70"></a>
+        let htmlnavDOM = ''
+        htmlnavDOM += `
+                    <a href="/employees/mainEp.html?Ep_id=${loginId}"><img src="/imags/Screenshot 2025-01-22 151148.png" width="70" height="70" style="margin: 10%;"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <div class="collapse navbar-collapse p-2" id="navbarSupportedContent" style="width: 100%;">
+                        <ul class="navbar-nav me-auto mb-4 mb-lg-0" s>
                             <a class="nav-link active" aria-current="page" href="/employees/mainEp.html?Ep_id=${loginId}">Home</a>
                         </ul>
-                    </div>
-                    <div class="profile" style="margin-left: 1150px;">
-                            <a href="/pages/proflie.html?Ep_id=${loginId}" style="color: black; text-decoration: none;">
+                        <div class="profile" style="width: 100% ; text-align: right; margin-right: 20px;">
+                            <a href="/employees/profileEp.html?Ep_id=${loginId}" style="color: black; text-decoration: none;">
                             <img src="/imags/8847419.png" width="60px">
-                    </div>
-            </div>
-        <div> </div>
-        <div>`
-        htmlnavDOM += '</div>'
+                            </a>
+                        </div>
+                    </div>`
         navloginDOM.innerHTML = htmlnavDOM
         console.log(statusLogin);
     } else {

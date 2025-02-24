@@ -141,7 +141,7 @@ app.post('/datahome/search', async (req, res) => {
         let values = [];
 
         if (titlehome) {
-            query += ` OR (titlehome LIKE ? OR location LIKE ?)`;
+            query += ` AND (titlehome LIKE ? OR location LIKE ?)`;
             values.push(`%${titlehome}%`, `%${titlehome}%`);
         }
         if (location) {
@@ -194,7 +194,7 @@ app.get('/owner/:id', async (req, res) => {
 app.get('/employee/:id', async (req, res) => {
     try {
         let id = req.params.id;
-        const results = await conn.query('SELECT employee_id, firstname, lastname, phone FROM employees WHERE employee_id = ?', id);
+        const results = await conn.query('SELECT employee_id, firstname, lastname, phone ,email ,location FROM employees WHERE employee_id = ?', id);
         if (results[0].length == 0) {
             res.status(404).json({
                 message: 'No from found'
