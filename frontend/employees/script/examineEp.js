@@ -4,6 +4,7 @@ window.onload = async () => {
     await checkLoginEp()
     await loadData()
 }
+// โหลดข้อมูล
 const loadData = async () => {
     console.log('loadData');
     const response = await axios.get(`${BASE_URL}/agreement`)
@@ -58,7 +59,7 @@ const loadData = async () => {
         })
     }
 }
-
+// ตรวจสอบการ login
 const checkLoginEp = async () => {
     console.log('checkLogin');
     const url = new URL(window.location.href)
@@ -98,6 +99,7 @@ const checkLoginEp = async () => {
                             <ul>
                                 <li><a href="/employees/mainEp.html?Ep_id=${loginId}">ประกาศ</a></li>
                                 <li><a href="/employees/examineEp.html?Ep_id=${loginId}">ตรวจสอบสัญญาเช่า</a></li>
+                                <li><a href="/employees/product.html.?Ep_id=${loginId}">แก้ไขข้อมูล</a></li>
                                 <li><a href="/main.html">ออกจากระบบ</a></li>
                             </ul>
                         </div>

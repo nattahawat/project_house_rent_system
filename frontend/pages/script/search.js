@@ -6,6 +6,7 @@ window.onload = async () => {
     await loadData()
 }
 
+//check ว่าลูกค้า Loginแล้วหรือไม่ถ้ายังไม่ได้ Login navbar จะแสดงปุ่ม login ถ้าลูกค้า Login แล้ว navbar จะแสดงรูปโปรไฟล์และปุ่ม logout
 const checkLogin = async () => {
     console.log('checkLogin');
     const url = new URL(window.location.href)
@@ -87,7 +88,7 @@ const loadData = async () => {
                     <img src="/imags/${datahome.image}" class="img-fluid rounded" style="height: 200px; object-fit: cover;">
                     <h5 class="mt-2">${datahome.titlehome}</h5> 
                     <p class="text-muted">ราคา: ${datahome.price} บาท</p> 
-                </a>  
+                </a>
             </div>
         </div>`
         }
@@ -116,7 +117,7 @@ const loadData = async () => {
     }
 }
 
-//search
+//search หน้าค้นหาข้อมูลโดยสามารถค้นหาได้จาก ชื่อบ้าน จังหวัด ประเภทบ้าน จำนวนห้องนอน
 const search = async () => {
     try {
         console.log('loaded');

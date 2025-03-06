@@ -1,9 +1,50 @@
 const BASE_URL = 'http://localhost:8000'
-let statusLogin = ''
-let loginId = ''
 
 window.onload = async () => {
     await checkLoginEp()
+    await loadData()
+}
+const loadData = async () => {
+    console.log('loadData');
+    const response = await axios.get(`${BASE_URL}/datahome`)
+    console.log(response.data);
+    const url = new URL(window.location.href)
+    loginId = url.searchParams.get('Ep_id')
+    console.log(loginId);
+
+    const fromDOM = document.getElementById('datahome')
+
+    let htmlData = '<div>'
+    for (let i = 0; i < response.data.length; i++) {
+        let datahome = response.data[i]
+        htmlData +=
+            `<div>
+        <div class="datahome">
+            <div class="card card-body m-2">
+                <a href='/employees/edit.html?home_id=${datahome.home_id}&Ep_id=${loginId}' style="color: black; text-decoration: none;">
+                    <img src="../imags/${datahome.image}" width="200" height="200">
+                    ${datahome.titlehome} <label>ราคา:</label> ${datahome.price} <label>บาท</label>
+                </a>   
+            </div>
+        </div>
+        <div>`
+    }
+    htmlData += '</div>';
+    fromDOM.innerHTML = htmlData
+
+    const deleteDOM = document.getElementsByClassName('delete')
+    for (let i = 0; i < deleteDOM.length; i++) {
+        deleteDOM[i].addEventListener('click', async (event) => {
+            const id = event.target.getAttribute('data-id')
+            console.log(id);
+            try {
+                await axios.delete(`${BASE_URL}/agreement/${id}`)
+                loadData() //recursive function = เรียกฟังก์ชันตัวเองซ้ำ
+            } catch (error) {
+                console.log(error);
+            }
+        })
+    }
 }
 
 const checkLoginEp = async () => {
@@ -30,7 +71,6 @@ const checkLoginEp = async () => {
                         <div class="profile" style="width: 100% ; text-align: right; margin-right: 20px;">
                             <a href="/employees/profileEp.html?Ep_id=${loginId}" style="color: black; text-decoration: none;">
                             <img src="/imags/8847419.png" width="60px">
-                            </a>
                         </div>
                     </div>`
         navloginDOM.innerHTML = htmlnavDOM

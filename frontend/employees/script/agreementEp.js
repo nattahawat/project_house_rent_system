@@ -114,7 +114,7 @@ window.onload = async () => {
         console.log('error', error);
     }
 }
-
+// ตรวจสอบการ login
 const checkLoginEp = async () => {
     console.log('checkLogin');
     const url = new URL(window.location.href)
@@ -149,7 +149,7 @@ const checkLoginEp = async () => {
         window.location.href = '/pages/loginEp.html'
     }
 }
-
+// ยืนยันการตรวจสอบ
 const pass = async () => {
     const urlParams = new URLSearchParams(window.location.search)
     const id = urlParams.get('agreements_id')
@@ -158,7 +158,7 @@ const pass = async () => {
     console.log(response.data)
     window.location.href = `/employees/examineEp.html?Ep_id=${loginId}`
 }
-
+// ไม่ผ่านการตรวจสอบ
 const notpass = async () => {
     const urlParams = new URLSearchParams(window.location.search)
     const id = urlParams.get('agreements_id')
@@ -167,7 +167,7 @@ const notpass = async () => {
     console.log(response.data)
     window.location.href = `/employees/examineEp.html?Ep_id=${loginId}`
 }
-
+// ย้อนกลับ
 const back = async () => {
      window.location.href = `/employees/examineEp.html?Ep_id=${loginId}`
 }

@@ -68,47 +68,23 @@ app.get('/datahome/:id', async (req, res) => {
     }
 })
 
-// //3.POST /agreement สำหรับเพิ่ม agreement ใหม่
-// app.post('/agreement', async (req, res) => {
-//     try {
-//         let agreementData = req.body;
-//         console.log("123456")
-//         console.log(agreementData)
-//         const results = await conn.query('INSERT INTO agreements SET ?', agreementData)
-//         res.json({
-//             message: 'Add from success',
-//             data: agreementData[0]
-//         })
-//     } catch (error) {
-//         res.status(500).json({
-//             message: error.message
-//         })
-//     }
-// })
+//4.PUT /datahome/:id สำหรับแก้ไข datahome ตาม id ที่เราส่งเข้ามา
+app.put('/datahome/:id',async(req,res)=>{
+    try{
+        let id = req.params.id;
+        let userData = req.body;
 
-// //4.PUT /datahome/:id สำหรับแก้ไข datahome ตาม id ที่เราส่งเข้ามา
-// app.put('/from/:id',async(req,res)=>{
-//     try{
-//         let id = req.params.id;
-//         let userData = req.body;
-//         const errors = validateData(userData);
-//         if (errors.length > 0){
-//             throw{
-//                 message: 'ข้อมูลไม่ครบถ้วน',
-//                 errors: errors
-//             }
-//         }
-//         const results = await conn.query('UPDATE medical_records SET ? WHERE id = ?',[userData,id])
-//         res.json({
-//             message:'Update from success',
-//             data: userData[0]
-//         })
-//     }catch(error){
-//         res.status(500).json({
-//             message:error.message
-//         })
-//     }
-// })
+        const results = await conn.query('UPDATE homes SET ? WHERE home_id = ?',[userData,id])
+        res.json({
+            message:'Update from success',
+            data: userData[0]
+        })
+    }catch(error){
+        res.status(500).json({
+            message:error.message
+        })
+    }
+})
 
 //5.DELETE /from/:id สำหรับลบ from ตาม id ที่เราส่งเข้ามา
 app.delete('/datahome/:id', async (req, res) => {
@@ -229,6 +205,23 @@ app.post('/employee/login', async (req, res) => {
     }
 })
 
+//put /employee/:id สำหรับแก้ไข employee ตาม id ที่เราส่งเข้ามา
+app.put('/employee/:id', async (req, res) => {
+    try {
+        let id = req.params.id;
+        let employeeData = req.body;
+        const results = await conn.query('UPDATE employees SET ? WHERE employee_id = ?', [employeeData, id])
+        res.json({
+            message: 'Update from success',
+            data: employeeData[0]
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        })
+    }
+})
+
 //ส่วน agreement
 
 // API อัปโหลดรูปและเพิ่มข้อมูล Agreement
@@ -341,13 +334,40 @@ app.get('/custom_agreement/:id', async (req, res) => {
             return;
         }
         res.json(results[0]);
-    } catch(error) {
+    } catch (error) {
         res.status(500).json({ message: error.message });
     }
 });
 
 
 //api custom
+//post /custom สำหรับเพิ่ม custom ใหม่
+app.post('/custom', async (req, res) => {
+    try {
+        let { email, password, ...customData } = req.body;
+        // ตรวจสอบว่ามี email หรือ password ซ้ำหรือไม่
+        const [existingCustomers] = await conn.query(
+            'SELECT * FROM customs WHERE email = ? OR password = ?',
+            [email, password]
+        );
+        if (existingCustomers.length > 0) {
+            return res.status(400).json({
+                message: 'Email or password already exists',
+            });
+        }
+        // ถ้าไม่มีซ้ำ ให้เพิ่มข้อมูลใหม่
+        const results = await conn.query('INSERT INTO customs SET ?',{email, password, ...customData });
+        res.json({
+            message: 'Add form success'
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: 'Internal Server Error',
+            error: error.message
+        });
+    }
+});
+
 //GET /custom/:id สำหรับ get custom ตาม id ที่เราส่งเข้ามา
 app.get('/custom/:id', async (req, res) => {
     try {

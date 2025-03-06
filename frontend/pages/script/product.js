@@ -90,6 +90,7 @@ window.onload = async () => {
     await checkLogin()
 }
 
+//check ว่าลูกค้า Loginแล้วหรือไม่ถ้ายังไม่ได้ Login navbar จะแสดงปุ่ม login ถ้าลูกค้า Login แล้ว navbar จะแสดงรูปโปรไฟล์และปุ่ม logout
 const checkLogin = async () => {
     console.log('checkLogin');
     const url = new URL(window.location.href)

@@ -24,7 +24,7 @@
                     <div class="row p-2">
                         <div class="col-4">
                             <div style="font-weight: bold;">เมื่อวันที่ทำสัญญา</div>
-                            <input type="date" class="form-control" name="contract_date">
+                            <input type="date" class="form-control" name="contract_date" disabled readonly>
                         </div>
                     </div>
                     <div class="owner">
@@ -34,10 +34,6 @@
                                 <div style="font-weight: bold;">ข้าพเจ้า:</div>
                                 <input type="text" class="form-control" name="owner_name" placeholder="ชื่อ-สกุล" disabled readonly>
                             </div>
-                            <!-- <div class="col-6">
-                                <div style="font-weight: bold;">อายุ:</div>
-                                <input type="number" class="form-control" name="owner_age" placeholder="กี่ปี" disabled>
-                            </div> -->
                         </div>
                         <div class="row p-2">
                             <div class="col-12">
@@ -57,7 +53,7 @@
                         <div class="row p-2">
                             <div class="col-6">
                                 <div style="font-weight: bold;">กับข้าพเจ้า:</div>
-                                <input type="text" class="form-control" name="renter_name" placeholder="ชื่อ-สกุล">
+                                <input type="text" class="form-control" name="renter_name" placeholder="ชื่อ-สกุล" disabled readonly>
                             </div>
                             <div class="col-6">
                                 <div style="font-weight: bold;">IDผู้เช่า:</div>
@@ -68,23 +64,23 @@
                             <div class="col-12">
                                 <div style="font-weight: bold;">ที่อยู่:</div>
                                 <textarea style="width: 50%; resize: none;" class="form-control" name="renter_address"
-                                    placeholder="บ้านเลขที่ หมู่ที่ ถนน ตำบล อำเภอ จังหวัด"></textarea>
+                                    placeholder="บ้านเลขที่ หมู่ที่ ถนน ตำบล อำเภอ จังหวัด" disabled readonly></textarea>
                             </div>
                         </div>
                         <div class="row p-2">
                             <div class="col-6">
                                 <div style="font-weight: bold;">ถือบัตรประชาชนเลขที่:</div>
                                 <input type="text" class="form-control" name="renter_nationalcard_number"
-                                    placeholder="เลขบัตรประชาชน 13 หลัก">
+                                    placeholder="เลขบัตรประชาชน 13 หลัก" disabled readonly>
                             </div>
                             <div class="col-3">
                                 <div style="font-weight: bold;">ออกให้โดยที่ว่าการอำเภอ:</div>
                                 <input type="text" class="form-control" name="renter_id_issued_by"
-                                    placeholder="ออกบัตรที่ไหน">
+                                    placeholder="ออกบัตรที่ไหน" disabled readonly>
                             </div>
                             <div class="col-3">
                                 <div style="font-weight: bold;">เมื่อวันที่:</div>
-                                <input type="date" class="form-control" name="renter_id_date" placeholder="mm/dd/yyyy">
+                                <input type="date" class="form-control" name="renter_id_date" placeholder="mm/dd/yyyy" disabled readonly>
                             </div>
                         </div>
                         <div class="row p-2">
@@ -114,7 +110,7 @@
                             <div class="col-6">
                                 <div style="font-weight: bold;">กำหนดชำระทุกวันที่ :</div>
                                 <input type="number" class="form-control" name="home_payment_date"
-                                    placeholder="วันที่จ่ายค่าเช่า ไม่เกินวันที่ 5 ของเดือน">
+                                    placeholder="วันที่จ่ายค่าเช่า ไม่เกินวันที่ 5 ของเดือน" disabled readonly>
                             </div>
                         </div>
                         <div class="row p-2">
@@ -133,15 +129,15 @@
                         <div class="row p-2">
                             <div class="col-4">
                                 <div style="font-weight: bold;">มีกำหนดเวลาเช่า:</div>
-                                <input type="number" class="form-control" name="rental_time" placeholder="เช่ากี่ปี">
+                                <input type="number" class="form-control" name="rental_time" placeholder="เช่ากี่ปี" disabled readonly>
                             </div>
                             <div class="col-4">
                                 <div style="font-weight: bold;">เริ่มตั้งแต่วันที่:</div>
-                                <input type="date" class="form-control" name="renter_checkin" placeholder="mm/dd/yyyy">
+                                <input type="date" class="form-control" name="renter_checkin" placeholder="mm/dd/yyyy" disabled readonly>
                             </div>
                             <div class="col-4">
                                 <div style="font-weight: bold;">ครบกำหนดวันเช่าวันที่:</div>
-                                <input type="date" class="form-control" name="renter_checkout" placeholder="mm/dd/yyyy">
+                                <input type="date" class="form-control" name="renter_checkout" placeholder="mm/dd/yyyy" disabled readonly>
                             </div>
                         </div>
                         <div class="row p-2">
@@ -194,12 +190,12 @@
             </div>
             <div class="row text-center" style="margin-top: 20px; font-weight: bold; font-size: larger;">
                 <div class="col-6">
-                    <p class="signature">ลงชื่อ <input type="text" name="sign_renter"> (ผู้เช่า)</p>
-                    <p class="signature">ลงชื่อ <input type="text" name="sign_witness1"> (พยาน)</p>
+                    <p class="signature">ลงชื่อ <input type="text" name="sign_renter" disabled readonly> (ผู้เช่า)</p>
+                    <p class="signature">ลงชื่อ <input type="text" name="sign_witness1" disabled readonly> (พยาน)</p>
                 </div>
                 <div class="col-6">
                     <p class="signature">ลงชื่อ <input type="text" name="sign_owner" disabled> (ผู้ให้เช่า)</p>
-                    <p class="signature">ลงชื่อ <input type="text" name="sign_witness2"> (พยาน)</p>
+                    <p class="signature">ลงชื่อ <input type="text" name="sign_witness2" disabled readonly> (พยาน)</p>
                 </div>
             </div>
             <button onclick="printDocument()" class="btn btn-primary" style="margin-top: 20px;">พิมพ์เอกสาร</button>
